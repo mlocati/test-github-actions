@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  powershell:
+    name: PowerShell
+    runs-on: windows-latest
+    steps:
+      - name: List SysWOW64
+        shell: powershell
+        run: |
+          Get-ChildItem $(Join-Path -Path $Env:windir -ChildPath SysWOW64)
